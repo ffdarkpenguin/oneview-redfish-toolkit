@@ -84,10 +84,10 @@ def get_manager_collection():
 
     except OneViewRedfishResourceNotFoundError as e:
         # In case of error print exception and abort
-        logging.error(e)
+        logging.exception('OneView resource could not be found:')
         abort(status.HTTP_404_NOT_FOUND, e.msg)
 
     except Exception as e:
         # In case of error print exception and abort
-        logging.error('Unexpected error: {}'.format(e))
+        logging.exception('Unexpected error:')
         abort(status.HTTP_500_INTERNAL_SERVER_ERROR)
